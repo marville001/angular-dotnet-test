@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-item-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './item-list.component.html',
-  styleUrl: './item-list.component.css'
+  templateUrl: './item-list.component.html'
 })
 export class ItemListComponent {
 
