@@ -1,5 +1,5 @@
 
-# Angular | .NET
+# Angular | .NET Test
 
 ---
 
@@ -10,7 +10,7 @@ To view the project, start both api and ui
 Use commands below to start the api
 
 ```
-	cd api
+ 	cd api
 	dotnet run build
 	dotnet run
 ```
