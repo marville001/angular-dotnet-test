@@ -1,0 +1,12 @@
+bin
+node_modules
+
+#Configurations
+.env
+node_modules
+
+/build
+
+.env*.local
+
+*.sln
