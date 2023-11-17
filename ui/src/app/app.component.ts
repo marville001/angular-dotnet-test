@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
 
 const MODULE_IMPORTS = [
   CommonModule,
-  RouterOutlet,
-  RouterLink,
-  RouterLinkActive
+  RouterOutlet
 ];
 
 const COMPONENT_IMPORTS = [

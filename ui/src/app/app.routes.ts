@@ -4,7 +4,8 @@ import { AddItemFormComponent } from "./components/add-item-form/add-item-form.c
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 export const routes: Routes = [
-  { path: '', component: ItemListComponent },
-  { path: 'new', component: AddItemFormComponent },
+  { path: '', redirectTo: '/items', pathMatch: 'full' },
+  { path: 'items', component: ItemListComponent },
+  { path: 'new-item', component: AddItemFormComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
