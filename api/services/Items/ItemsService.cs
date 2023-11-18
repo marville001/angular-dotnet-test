@@ -7,10 +7,10 @@ public class ItemsService : IItemsService
 {
     private readonly List<ItemModel> items = new()
     {
-        new() {
-            Id = 0, Title="Leslie Alexander",
-            Description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum quam totam? Hsit amet consectetur, adipisicing elit. Commodi optio sit harum eaque unde veniam architecto hic laboriosam alias velit."
-        }
+        // new() {
+        //     Id = 0, Title="Leslie Alexander",
+        //     Description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum quam totam? Hsit amet consectetur, adipisicing elit. Commodi optio sit harum eaque unde veniam architecto hic laboriosam alias velit."
+        // }
 
     };
 
