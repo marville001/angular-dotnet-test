@@ -1,6 +1,14 @@
 <div *ngIf="itemsService.error" class="py-3 rounded-md my-3 text-center bg-red-200 text-red-400 px-4">
   {{itemsService.error}}</div>
 
+<div class="flex justify-center items-center flex-col" *ngIf="itemsService.items.length === 0"  >
+<h3>No Items found</h3>
+
+<a type="submit" [routerLink]="['/new-item']" routerLinkActive="router-link-active"
+  class="flex px-6 mt-3 justify-center rounded-md bg-indigo-600 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Item</a>
+
+</div>
+
 <ul *ngIf="itemsService.items.length > 0" role="list" class="divide-y-4 divide-white">
   <li *ngFor="let item of itemsService.items; let i = index"
     class="flex justify-between items-center gap-x-6 py-5 mt-3 bg-white px-3 rounded-md relative">
