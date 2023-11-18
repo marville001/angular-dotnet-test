@@ -1,21 +1,41 @@
 <div class="flex min-h-full flex-col justify-center">
-  <form class="space-y-4 bg-white p-4 rounded-md" action="#" method="POST">
+  <form [formGroup]="itemForm" (ngSubmit)="onAddItem()" class="space-y-4 bg-white p-4 rounded-md" action="#"
+    method="POST">
     <h2 class="text-lg mt-2 font-bold">Add Item</h2>
+
+    <div *ngIf="itemsService.error" class="py-3 rounded-md my-3 text-center bg-red-200 text-red-400 px-4">
+      {{itemsService.error}}
+    </div>
 
     <hr>
 
     <div>
       <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
       <div class="mt-2">
-        <input id="title" name="title" type="text" autocomplete="title" required
+        <input id="title" formControlName="title" name="title" type="text" autocomplete="title" required
           class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm px-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-0 focus:border-none ">
       </div>
+      <span class="text-red-400"
+        *ngIf="(itemFormControl.title.touched || submitted) && itemFormControl.title.errors?.['required']">
+        Name is required
+      </span>
+    </div>
+    <div>
+      <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+      <div class="mt-2">
+        <textarea id="description" formControlName="description" name="description" type="text"
+          autocomplete="description" required rows="5"
+          class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm px-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-0 focus:border-none "></textarea>
+      </div>
+      <span class="text-red-400"
+        *ngIf="(itemFormControl.description.touched || submitted) && itemFormControl.description.errors?.['required']">
+        Description is required
+      </span>
     </div>
 
     <div class="mt-5 py-4">
       <button type="submit"
-        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >Submit</button>
+        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
     </div>
   </form>
 </div>
