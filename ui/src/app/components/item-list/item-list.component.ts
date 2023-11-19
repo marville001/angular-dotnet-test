@@ -11,6 +11,8 @@ import { RouterLink } from "@angular/router";
 })
 export class ItemListComponent {
 
+  calculatingFactorial = false;
+
   constructor(public itemsService: ItemsService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,10 @@ export class ItemListComponent {
 
   ngOnDestroy() {
     this.itemsService.resetError()
+  }
+
+  calculateFactorial() {
+
   }
 
 }

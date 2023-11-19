@@ -1,31 +1,48 @@
 <div *ngIf="itemsService.error" class="py-3 rounded-md my-3 text-center bg-red-200 text-red-400 px-4">
-  {{itemsService.error}}</div>
+  {{itemsService.error}}
+</div>
 
-<div class="flex justify-center items-center flex-col" *ngIf="itemsService.items.length === 0"  >
-<h3>No Items found</h3>
+<div class="flex justify-center items-center flex-col" *ngIf="itemsService.items.length === 0">
+  <h3>No Items found</h3>
 
-<a type="submit" [routerLink]="['/new-item']" routerLinkActive="router-link-active"
-  class="flex px-6 mt-3 justify-center rounded-md bg-indigo-600 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Item</a>
+  <a type="submit" [routerLink]="['/new-item']" routerLinkActive="router-link-active"
+    class="flex px-6 mt-3 justify-center rounded-md bg-indigo-600 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
+    Item</a>
 
 </div>
 
-<ul *ngIf="itemsService.items.length > 0" role="list" class="divide-y-4 divide-white">
-  <li *ngFor="let item of itemsService.items; let i = index"
-    class="flex justify-between items-center gap-x-6 py-5 mt-3 bg-white px-3 rounded-md relative">
-    <span
-      class="flex absolute justify-center items-center rounded-full -top-0 left-0 -translate-y-1/3 -translate-x-1/3 w-6 h-6 bg-gray-200 text-indigo-600">
-      {{i+1}}
-    </span>
-    <div class="min-w-0 gap-x-4">
-      <h3 class="text-lg font-semibold leading-6 text-gray-900">{{item.title}}</h3>
-      <hr class="mt-1">
-      <p class="mt-2 line-clamp-3 text-sm leading-5 text-gray-500">
-        {{item.description}}
-      </p>
-    </div>
-    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-      <button type="submit"
-        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Action</button>
-    </div>
-  </li>
-</ul>
+<div *ngIf="itemsService.items.length > 0" class="py-2">
+  <div class="flex justify-end">
+    <button (click)="calculateFactorial()" type="submit"
+    [disabled]="calculatingFactorial"
+      class="flex my-4 justify-center disabled:bg-opacity-50 disabled:cursor-not-allowed rounded-md bg-indigo-600 px-6 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ calculatingFactorial? "Loading...": "Calculate Factorials" }}</button>
+  </div>
+  <ul role="list" class="divide-y-4 divide-white">
+    <li *ngFor="let item of itemsService.items; let i = index"
+      class="flex justify-between items-center gap-x-6 py-5 mt-3 bg-white px-3 rounded-md relative">
+      <span
+        class="flex absolute justify-center items-center rounded-full -top-0 left-0 -translate-y-1/3 -translate-x-1/3 w-6 h-6 bg-gray-200 text-indigo-600">
+        {{i+1}}
+      </span>
+      <div class="min-w-0 gap-x-4">
+        <h3 class="text-lg font-semibold leading-6 text-gray-900">{{item.title}}</h3>
+        <hr class="mt-1">
+        <p class="mt-2 line-clamp-3 text-sm leading-5 text-gray-500">
+          {{item.description}}
+        </p>
+      </div>
+
+      <div *ngIf="item.factorial" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+        <h3>Factorial</h3>
+        <span class="text-2xl">{{item.factorial}}</span>
+      </div>
+      <div *ngIf="calculatingFactorial" class="text-lg animate-spin">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6 opacity-60">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+      </div>
+    </li>
+  </ul>
+</div>
