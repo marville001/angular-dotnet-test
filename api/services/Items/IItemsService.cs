@@ -6,5 +6,6 @@ namespace api.services.Items
     {
         public List<ItemModel> GetItems();
         public ItemModel AddItem(AddItemDto itemToAdd);
+        public List<ItemModel> GetFactorials();
     }
 }

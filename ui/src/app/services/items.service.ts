@@ -38,6 +38,19 @@ export class ItemsService {
     });
   }
 
+  public async calculateFactorials(onSuccess: Function = () => { }, onError: Function = () => { }) {
+    this.http.get<Item[]>(this.apiBase+"/factorials").subscribe(result => {
+      this.items_ = result;
+      onSuccess();
+    }, error => {
+      let errorMessage = error.statusText === "Unknown Error"
+        ? "Failed to get factorials. Please try again later"
+        : error?.error?.message ?? error.message;
+      this.error_ = errorMessage;
+      onError();
+    });
+  }
+
   public async addItem(item: Item, onSuccess: Function=()=>{}) {
     this.http.post<Item>(this.apiBase+"/new", item).subscribe({
       next: (result) => {

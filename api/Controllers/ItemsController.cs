@@ -47,4 +47,20 @@ public class ItemsController : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
+
+    [HttpGet]
+    [Route("factorials")]
+    public ActionResult<List<ItemModel>> GetFactorials()
+    {
+        try
+        {
+            var result = _itemsService.GetFactorials();
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 }

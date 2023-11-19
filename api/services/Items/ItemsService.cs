@@ -7,10 +7,10 @@ public class ItemsService : IItemsService
 {
     private readonly List<ItemModel> items = new()
     {
-        // new() {
-        //     Id = 0, Title="Leslie Alexander",
-        //     Description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum quam totam? Hsit amet consectetur, adipisicing elit. Commodi optio sit harum eaque unde veniam architecto hic laboriosam alias velit."
-        // }
+        new() {
+            Id = 0, Title="Leslie Alexander",
+            Description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum quam totam? Hsit amet consectetur, adipisicing elit. Commodi optio sit harum eaque unde veniam architecto hic laboriosam alias velit."
+        }
 
     };
 
@@ -38,6 +38,36 @@ public class ItemsService : IItemsService
         items.Add(newItem);
 
         return newItem;
+    }
+
+    public List<ItemModel> GetFactorials()
+    {
+        // Process items concurrently
+        Parallel.ForEach(items, ProcessItem);
+
+        return items;
+    }
+
+    public void ProcessItem(ItemModel item)
+    {
+        Thread.Sleep(2000);
+
+        // Calculate factorial and update the item
+        item.Factorial = CalculateFactorial(item.Id+1); // +1 as Id starts from 0
+    }
+
+    private int CalculateFactorial(int number)
+    {
+        if (number == 0 || number == 1)
+            return 1;
+
+        int result = 1;
+        for (int i = 2; i <= number; i++)
+        {
+            result *= i;
+        }
+
+        return result;
     }
 
     public List<ItemModel> GetItems()

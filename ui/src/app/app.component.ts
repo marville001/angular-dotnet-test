@@ -21,6 +21,7 @@ const COMPONENT_IMPORTS = [
     ...COMPONENT_IMPORTS
   ],
 })
+
 export class AppComponent {
   title = 'ui';
 }
