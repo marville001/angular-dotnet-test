@@ -32,7 +32,7 @@
         </p>
       </div>
 
-      <div *ngIf="item.factorial" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+      <div *ngIf="item.factorial && !calculatingFactorial" class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
         <h3>Factorial</h3>
         <span class="text-2xl">{{item.factorial}}</span>
       </div>
