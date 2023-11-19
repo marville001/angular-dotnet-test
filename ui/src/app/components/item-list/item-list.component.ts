@@ -20,10 +20,19 @@ export class ItemListComponent {
   }
 
   ngOnDestroy() {
-    this.itemsService.resetError()
+    this.itemsService.resetError();
   }
 
   calculateFactorial() {
+    this.calculatingFactorial = true;
+    this.itemsService.calculateFactorials(
+      () => {
+        this.calculatingFactorial = false;
+      },
+      () => {
+        this.calculatingFactorial = false;
+      },
+    );
 
   }
 
